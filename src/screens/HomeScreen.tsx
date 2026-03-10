@@ -33,27 +33,36 @@ export default function HomeScreen() {
       <View style={styles.content}>
         <View style={styles.card}>
           <View style={styles.headerRow}>
-            <View style={styles.avatar}>
-              <Text style={styles.avatarText}>{initial}</Text>
+            <View style={styles.avatarWrap}>
+              <View style={styles.avatar}>
+                <Text style={styles.avatarText}>{initial}</Text>
+              </View>
             </View>
             <View style={styles.headerTextContainer}>
+              <Text style={styles.welcomeLabel}>Welcome back</Text>
               <Text style={styles.greeting}>
                 {greeting},{' '}
                 <Text style={styles.greetingHighlight}>{displayName}</Text>
               </Text>
               {user?.email ? (
-                <Text style={styles.emailText}>{user.email}</Text>
+                <View style={styles.emailChip}>
+                  <Text style={styles.emailText} numberOfLines={1}>
+                    {user.email}
+                  </Text>
+                </View>
               ) : null}
             </View>
           </View>
 
-          <Text style={styles.description}>
-            You&apos;re signed in to your account. This is your home screen
-            where you can see your profile details and manage your session.
-          </Text>
+          <View style={styles.infoBox}>
+            <Text style={styles.description}>
+              You&apos;re signed in to your account. View your profile details
+              and manage your session here.
+            </Text>
+          </View>
 
           <PrimaryButton
-            label="Logout"
+            label="Log out"
             onPress={handleLogout}
             style={styles.button}
           />
@@ -66,58 +75,94 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   content: {
     flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: spacing.lg,
+    paddingHorizontal: 0,
+    paddingTop: spacing.sm,
+  },
+  screenTitle: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: colors.textMuted,
+    letterSpacing: 0.5,
+    marginBottom: spacing.md,
   },
   card: {
     backgroundColor: colors.background,
-    borderRadius: 16,
+    borderRadius: 20,
     padding: spacing.xl,
+    marginHorizontal: 0,
+    borderWidth: 1,
+    borderColor: colors.border,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 4},
-    shadowOpacity: 0.08,
-    shadowRadius: 12,
-    elevation: 3,
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.06,
+    shadowRadius: 16,
+    elevation: 4,
   },
   headerRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: spacing.lg,
+    marginBottom: spacing.xl,
   },
-  avatar: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: colors.primaryLight,
-    alignItems: 'center',
-    justifyContent: 'center',
+  avatarWrap: {
     marginRight: spacing.md,
   },
+  avatar: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    backgroundColor: colors.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderColor: colors.primaryLight,
+  },
   avatarText: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: '700',
     color: '#FFFFFF',
   },
   headerTextContainer: {
     flex: 1,
+    minWidth: 0,
+  },
+  welcomeLabel: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: colors.textMuted,
+    letterSpacing: 0.3,
+    marginBottom: 2,
   },
   greeting: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: '700',
     color: colors.text,
+    marginBottom: spacing.xs,
   },
   greetingHighlight: {
     color: colors.primary,
   },
+  emailChip: {
+    alignSelf: 'flex-start',
+    backgroundColor: colors.backgroundAlt,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.xs,
+    borderRadius: 8,
+    maxWidth: '100%',
+  },
   emailText: {
-    fontSize: 16,
+    fontSize: 13,
     color: colors.textMuted,
+  },
+  infoBox: {
+    backgroundColor: colors.backgroundAlt,
+    borderRadius: 12,
+    padding: spacing.md,
     marginBottom: spacing.xl,
   },
   description: {
     fontSize: 14,
+    lineHeight: 20,
     color: colors.textMuted,
-    marginBottom: spacing.xl,
   },
   button: {
     alignSelf: 'stretch',

@@ -30,7 +30,7 @@
 Follow the Getting Started steps above:
 1. Clone the repository
 ```sh
-git clone <your-repository-link>
+git clone https://github.com/Saurabh123kandari/AuthAppDemo.git
 ```
 ```sh
 cd AuthAppDemo
