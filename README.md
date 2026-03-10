@@ -33,7 +33,7 @@ Follow the Getting Started steps above:
 git clone https://github.com/Saurabh123kandari/AuthAppDemo.git
 ```
 ```sh
-cd AuthAppDemo
+cd AuthApp
 ```
 1. Install dependencies:
 
