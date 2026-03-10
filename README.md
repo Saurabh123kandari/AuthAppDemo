@@ -58,3 +58,20 @@ npm run android
 npm run ios
 ```
 
+## Screenshots
+
+### Login Screen
+![Login](screenshots/login.png)
+
+### Signup Screen
+![Signup](screenshots/signup.png)
+
+### Home Screen
+![Home](screenshots/home.png)
+
+### Login Validation Screen
+![Home](screenshots/login_validation.png)
+
+### Signup Validation Screen
+![Home](screenshots/signup_validation.png)
+
