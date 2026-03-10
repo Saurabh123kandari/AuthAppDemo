@@ -81,7 +81,7 @@ export default function SignupScreen({navigation}: Props) {
             onChangeText={handleNameChange}
             errorMessage={errors.name}
             containerStyle={styles.field}
-            placeholder="John Doe"
+            placeholder="your name"
           />
 
           <AppTextInput
@@ -93,7 +93,7 @@ export default function SignupScreen({navigation}: Props) {
             autoCorrect={false}
             errorMessage={errors.email}
             containerStyle={styles.field}
-            placeholder="you@example.com"
+            placeholder="your email address"
           />
 
           <AppTextInput
@@ -104,7 +104,7 @@ export default function SignupScreen({navigation}: Props) {
             autoCapitalize="none"
             errorMessage={errors.password}
             containerStyle={styles.field}
-            placeholder="At least 6 characters"
+            placeholder="enter a secure password"
             RightAccessory={PasswordToggle}
           />
 

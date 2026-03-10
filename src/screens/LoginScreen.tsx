@@ -65,8 +65,8 @@ export default function LoginScreen({navigation}: Props) {
   return (
     <ScreenContainer>
       <AuthCard
-        title="Login"
-        subtitle="Log in to continue to your account.">
+        title="Log in"
+        subtitle="Use the email you signed up with.">
         <View style={styles.form}>
           <AppTextInput
             label="Email"
@@ -92,10 +92,12 @@ export default function LoginScreen({navigation}: Props) {
             RightAccessory={PasswordToggle}
           />
 
-          <ErrorText message={authError} />
+          <View style={styles.errorBlock}>
+            <ErrorText message={authError} />
+          </View>
 
           <PrimaryButton
-            label="Login"
+            label="Log in"
             onPress={handleSubmit}
             loading={submitting}
             style={styles.primaryButton}
@@ -103,7 +105,7 @@ export default function LoginScreen({navigation}: Props) {
 
           <AuthSwitchRow
             text="Don't have an account?"
-            linkLabel="Go to Signup"
+            linkLabel="Sign up"
             onPress={() => navigation.navigate('Signup')}
           />
         </View>
@@ -119,8 +121,12 @@ const styles = StyleSheet.create({
   field: {
     marginBottom: spacing.lg,
   },
+  errorBlock: {
+    marginTop: spacing.sm,
+    marginBottom: spacing.xl,
+  },
   primaryButton: {
-    marginTop: spacing.lg,
+    marginTop: 0,
   },
 });
 
