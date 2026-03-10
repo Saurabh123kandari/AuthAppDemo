@@ -25,6 +25,24 @@ export default function SignupScreen({navigation}: Props) {
   const [submitting, setSubmitting] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
 
+  const handleNameChange = (text: string) => {
+    setName(text);
+    const {name: nameError} = validateSignup(text, email, password);
+    setErrors(prev => ({...prev, name: nameError}));
+  };
+
+  const handleEmailChange = (text: string) => {
+    setEmail(text);
+    const {email: emailError} = validateSignup(name, text, password);
+    setErrors(prev => ({...prev, email: emailError}));
+  };
+
+  const handlePasswordChange = (text: string) => {
+    setPassword(text);
+    const {password: passwordError} = validateSignup(name, email, text);
+    setErrors(prev => ({...prev, password: passwordError}));
+  };
+
   const handleSubmit = async () => {
     const validationErrors = validateSignup(name, email, password);
     setErrors(validationErrors);
@@ -57,7 +75,7 @@ export default function SignupScreen({navigation}: Props) {
           <AppTextInput
             label="Name"
             value={name}
-            onChangeText={setName}
+            onChangeText={handleNameChange}
             errorMessage={errors.name}
             containerStyle={styles.field}
             placeholder="John Doe"
@@ -66,7 +84,7 @@ export default function SignupScreen({navigation}: Props) {
           <AppTextInput
             label="Email"
             value={email}
-            onChangeText={setEmail}
+            onChangeText={handleEmailChange}
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect={false}
@@ -78,7 +96,7 @@ export default function SignupScreen({navigation}: Props) {
           <AppTextInput
             label="Password"
             value={password}
-            onChangeText={setPassword}
+            onChangeText={handlePasswordChange}
             secureTextEntry={!passwordVisible}
             autoCapitalize="none"
             errorMessage={errors.password}

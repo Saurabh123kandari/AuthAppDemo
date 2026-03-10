@@ -24,6 +24,18 @@ export default function LoginScreen({navigation}: Props) {
   const [submitting, setSubmitting] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
 
+  const handleEmailChange = (text: string) => {
+    setEmail(text);
+    const {email: emailError} = validateLogin(text, password);
+    setErrors(prev => ({...prev, email: emailError}));
+  };
+
+  const handlePasswordChange = (text: string) => {
+    setPassword(text);
+    const {password: passwordError} = validateLogin(email, text);
+    setErrors(prev => ({...prev, password: passwordError}));
+  };
+
   const handleSubmit = async () => {
     const validationErrors = validateLogin(email, password);
     setErrors(validationErrors);
@@ -56,7 +68,7 @@ export default function LoginScreen({navigation}: Props) {
           <AppTextInput
             label="Email"
             value={email}
-            onChangeText={setEmail}
+            onChangeText={handleEmailChange}
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect={false}
@@ -68,7 +80,7 @@ export default function LoginScreen({navigation}: Props) {
           <AppTextInput
             label="Password"
             value={password}
-            onChangeText={setPassword}
+            onChangeText={handlePasswordChange}
             secureTextEntry={!passwordVisible}
             autoCapitalize="none"
             errorMessage={errors.password}
