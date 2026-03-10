@@ -24,44 +24,36 @@
   - `login`, `signup`, and `logout` functions exposed via context.
   - Optional persistence via `AsyncStorage` so the user can remain logged in between app launches.
 
-- **UI/UX**
-  - Modern, card-like layout with consistent spacing and typography.
-  - Reusable components:
-    - `ScreenContainer` for safe area, scrolling, and keyboard handling.
-    - `AppTextInput` with labels and inline error text.
-    - `PrimaryButton` for primary actions with loading state.
-    - `ErrorText` for consistent error styling.
-  - Password visibility toggle on both Login and Signup password fields.
 
 ## Running the app
 
 Follow the Getting Started steps above:
-
+1. Clone the repository
+```sh
+git clone <your-repository-link>
+```
+```sh
+cd AuthAppDemo
+```
 1. Install dependencies:
 
 ```sh
 npm install
 ```
 
-2. Install native dependencies for iOS (first time or after changing native deps):
-
-```sh
-bundle install
-bundle exec pod install
-```
-
-3. Start Metro:
+2. Start Metro:
 
 ```sh
 npm start
 ```
 
-4. Run on a device or emulator:
+3. Run on a device or emulator:
 
 ```sh
 # Android
 npm run android
-
+```
+```sh
 # iOS
 npm run ios
 ```
