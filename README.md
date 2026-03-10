@@ -57,22 +57,27 @@ npm run android
 # iOS
 npm run ios
 ```
+
+<div align="center">
+
 ## Screenshots
 
 ### Login Screen
-<img src="screenshots/login.png" width="220"/>
+<img src="screenshots/login.png" width="230"/>
 
 ### Signup Screen
-<img src="screenshots/signup.png" width="220"/>
+<img src="screenshots/signup.png" width="230"/>
 
 ### Home Screen
-<img src="screenshots/home.png" width="220"/>
+<img src="screenshots/home.png" width="230"/>
 
 ### Login Validation Screen
-<img src="screenshots/login_validation.png" width="220"/>
+<img src="screenshots/login_validation.png" width="230"/>
 
 ### Signup Validation Screen
-<img src="screenshots/signup_validation.png" width="220"/>
+<img src="screenshots/signup_validation.png" width="230"/>
+
+</div>
 
 ## Demo Video
 
