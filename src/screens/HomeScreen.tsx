@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, ToastAndroid} from 'react-native';
 import ScreenContainer from '../components/ScreenContainer';
 import PrimaryButton from '../components/PrimaryButton';
 import {useAuth} from '../context/AuthContext';
@@ -8,6 +8,11 @@ import {spacing} from '../theme/spacing';
 
 export default function HomeScreen() {
   const {user, logout} = useAuth();
+
+  const handleLogout = React.useCallback(async () => {
+    await logout();
+    ToastAndroid.show('Logged out successfully', ToastAndroid.SHORT);
+  }, [logout]);
 
   const initial = React.useMemo(() => {
     if (user?.name && user.name.trim().length > 0) {
@@ -49,7 +54,7 @@ export default function HomeScreen() {
 
           <PrimaryButton
             label="Logout"
-            onPress={logout}
+            onPress={handleLogout}
             style={styles.button}
           />
         </View>

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, ToastAndroid} from 'react-native';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import ScreenContainer from '../components/ScreenContainer';
 import AppTextInput from '../components/AppTextInput';
@@ -53,7 +53,10 @@ export default function SignupScreen({navigation}: Props) {
 
     try {
       setSubmitting(true);
-      await signup(name, email, password);
+      const success = await signup(name, email, password);
+      if (success) {
+        ToastAndroid.show('Signup successful', ToastAndroid.SHORT);
+      }
     } finally {
       setSubmitting(false);
     }

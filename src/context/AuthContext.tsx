@@ -19,8 +19,8 @@ type AuthContextValue = {
   user: AuthUser | null;
   authLoading: boolean;
   authError: string | null;
-  login: (email: string, password: string) => Promise<void>;
-  signup: (name: string, email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<boolean>;
+  signup: (name: string, email: string, password: string) => Promise<boolean>;
   logout: () => Promise<void>;
 };
 
@@ -77,7 +77,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       // Basic duplicate check for this in-memory demo
       if (storedCredentials && storedCredentials.email === email) {
         setAuthError('An account with this email already exists.');
-        return;
+        return false;
       }
 
       const trimmedName = name.trim();
@@ -97,6 +97,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       setUser(newUser);
       await persistUser(newUser);
+      return true;
     },
     [persistUser, storedCredentials],
   );
@@ -107,7 +108,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       if (!storedCredentials) {
         setAuthError('No account found. Please sign up first.');
-        return;
+        return false;
       }
 
       const trimmedEmail = email.trim().toLowerCase();
@@ -117,7 +118,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         storedCredentials.password !== password
       ) {
         setAuthError('Incorrect email or password.');
-        return;
+        return false;
       }
 
       const nextUser: AuthUser = {
@@ -128,6 +129,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       setUser(nextUser);
       await persistUser(nextUser);
+      return true;
     },
     [persistUser, storedCredentials],
   );
