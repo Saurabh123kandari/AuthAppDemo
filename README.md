@@ -75,3 +75,9 @@ npm run ios
 ### Signup Validation Screen
 ![Home](screenshots/signup_validation.png)
 
+## Demo Video
+
+Watch the demo here:
+
+https://drive.google.com/file/d/1aNQSBqmh7q0sKAfVyvobstnTE89aUeKU/view?usp=sharing
+
